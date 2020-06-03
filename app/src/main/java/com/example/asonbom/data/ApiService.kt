@@ -5,10 +5,7 @@ import com.example.asonbom.data.responses.LoginResponse
 import com.example.asonbom.data.responses.PostsResponse
 import com.example.asonbom.utils.Constants
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -16,6 +13,7 @@ interface ApiService {
     @FormUrlEncoded
     fun login(@Body request: LoginRequest): Call<LoginResponse>
 
-    @GET(Constants.POST_URL)
+    @GET(Constants.POSTS_URL)
+    //fun fetchPosts(@Header("Authorization") token: String): Call<PostsResponse>
     fun fetchPosts(): Call<PostsResponse>
 }

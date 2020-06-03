@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     private lateinit var apiService:ApiService
 
-    fun getApiService(): ApiService{
+    fun getApiService(context: Context): ApiService{
         if (!::apiService.isInitialized){
             val retrofit=Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)

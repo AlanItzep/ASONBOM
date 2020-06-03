@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         apiClient = ApiClient()
         sessionManager = SessionManager(this)
 
-        apiClient.getApiService().login(LoginRequest(email="moises@moises.com", password = "admin"))
+        apiClient.getApiService(this).login(LoginRequest(email="moises@moises.com", password = "admin"))
             .enqueue(object : Callback<LoginResponse>{
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable){
                     //Error Login In
