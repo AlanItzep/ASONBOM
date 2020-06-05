@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                             sessionManager.saveAuthToken(loginResponse.authToken)
                             Toast.makeText(
                                 applicationContext,
-                                response.body()?.authToken,
+                                loginResponse.authToken,
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {

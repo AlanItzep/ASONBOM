@@ -11,12 +11,17 @@ interface ApiService {
 
 
     @POST(Constants.LOGIN_URL)
-    //@FormUrlEncoded
     fun login(@Body request: LoginRequest): Call<LoginResponse>
+    //@FormUrlEncoded
+    //un login(@Body ("Content-Type: application/x-www-form-urlencoded") String:): Call<LoginResponse>
     //fun login(@Header("Content-Type: application/x-www-form-urlencoded") @Field ( "json") String: jsonRequest): Call<LoginResponse>
 
 
     @GET(Constants.POSTS_URL)
     //fun fetchPosts(@Header("Authorization") token: String): Call<PostsResponse>
     fun fetchPosts(): Call<PostsResponse>
+
+    //@GET("prices?key=fadfeddc4de3cf17ebc1421b39578c20")
+    //fun getData(): Observable<List<RetroCrypto>>
+
 }

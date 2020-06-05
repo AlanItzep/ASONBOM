@@ -13,9 +13,10 @@ class AuthInterceptor(context: Context) : Interceptor{
         val requestBuilder = chain.request().newBuilder()
 
         sessionManager.fetchAuthToken()?.let{
-            requestBuilder.addHeader("Authorization","Bearer $it")
+            requestBuilder.addHeader("Authorization", "Bearer $it")
+            //requestBuilder.addHeader("Content-Type","application/x-www-form-urlencoded")
         }
-
+        //"Content-Type: application/x-www-form-urlencoded"
         return chain.proceed(requestBuilder.build())
     }
 }

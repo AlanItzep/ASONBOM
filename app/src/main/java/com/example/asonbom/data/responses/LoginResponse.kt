@@ -12,11 +12,5 @@ data class LoginResponse(
     var authToken:String,
 
     @SerializedName("user")
-    var user: User?,
-
-    @SerializedName("token")
-    var getToken: String,
-
-    @SerializedName("sample_json")
-    val sampleJson: JSONObject = JSONObject("""{"email":"moises@moises.com", "password":"admin"}""")
+    var user: User?
 )
