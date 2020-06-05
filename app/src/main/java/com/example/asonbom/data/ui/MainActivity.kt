@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<PostsResponse>,response:Response<PostsResponse>){
                     if (response.isSuccessful){
                         Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+
                     }
                     else{
                         Toast.makeText(applicationContext,"login not correct! ", Toast.LENGTH_SHORT).show()

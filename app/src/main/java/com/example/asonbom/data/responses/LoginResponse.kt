@@ -2,6 +2,7 @@ package com.example.asonbom.data.responses
 
 import com.example.asonbom.data.models.User
 import com.google.gson.annotations.SerializedName
+import org.json.JSONObject
 
 data class LoginResponse(
     @SerializedName("status_code")
@@ -14,5 +15,8 @@ data class LoginResponse(
     var user: User?,
 
     @SerializedName("token")
-    var getToken: String
+    var getToken: String,
+
+    @SerializedName("sample_json")
+    val sampleJson: JSONObject = JSONObject("""{"email":"moises@moises.com", "password":"admin"}""")
 )

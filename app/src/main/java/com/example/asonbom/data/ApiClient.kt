@@ -19,7 +19,6 @@ class ApiClient {
 
             apiService=retrofit.create(ApiService::class.java)
         }
-
         return apiService
     }
 
