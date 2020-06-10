@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ScrollView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,35 +37,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        test = findViewById(R.id.txt_info);
         setContentView(R.layout.activity_login);
-        final Button btn = findViewById(R.id.btn_login);
-        btn.setOnClickListener(this);
 
-/*
-        Call<LoginResult> callLogin = ApiAdapter.getApiService().getToken(datosLogin);
-        callLogin.enqueue(new Callback<LoginResult>() {
-            @Override
-            public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                test.setText(response.toString());
-            }
-            @Override
-            public void onFailure(Call<LoginResult> call, Throwable t) {
-                //for getting error in network put here Toast, so get the error on network
-            }
-        });*/
-    }
+        ScrollView sc = (ScrollView) findViewById(R.id.person_list);
 
-    public void onClick(View view){
-        test = findViewById(R.id.txt_info);
         Call<InfoStations> call = ApiClient.getApiService().getStations();
         call.enqueue(this);
         LoginData datos = new LoginData();
 
         AuthInterceptor datos2 = new AuthInterceptor();
         datos2.params(datos);
-
-        //test.setText(datos2.json);
 
         System.out.println(datos2);
         Call<InfoStations.LoginResponse> calllogin= ApiClient.getApiService().getToken(datos2);
@@ -81,6 +65,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 System.out.println(t);
             }
         });
+
+        ListAdapter adapter = new SimpleAdapter(LoginActivity.this, responseRaw, R.layout.row_layout, new String[]{"id","no_estacion","direccion","nombre","telefono","long","lat"},
+                                                        new int[]{R.id.txt_id,R.id.txt_no_estacion,R.id.txt_direccion,R.id.txt_nombre,R.id.txt_telefono,R.id.txt_long,R.id.lat});
+        sc.se
+        System.out.println(responseRaw
     }
 
     @Override
@@ -100,5 +89,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onItemClick(@NotNull InfoStations infoStations) {
         Toast.makeText(this,"You clicked: "+infoStations.code,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
