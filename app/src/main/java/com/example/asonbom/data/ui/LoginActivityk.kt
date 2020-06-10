@@ -3,37 +3,32 @@ package com.example.asonbom.data.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import com.example.asonbom.R
-import com.example.asonbom.data.ApiClient
-import com.example.asonbom.data.requests.LoginRequest
-import com.example.asonbom.data.responses.LoginResponse
+import com.example.asonbom.data.ApiClientK
 import com.example.asonbom.utils.SessionManager
-import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivityk : AppCompatActivity() {
 
     private lateinit var sessionManager: SessionManager
-    private lateinit var apiClient: ApiClient
+    private lateinit var apiClient: ApiClientK
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        apiClient = ApiClient()
+        apiClient = ApiClientK()
         sessionManager = SessionManager(this)
 
 
+
         val button = findViewById<Button>(R.id.btn_login)
-        button?.setOnClickListener()
-        {logLogin()}
+        button?.setOnClickListener{
+            //logLogin()
+        }
     }
+    /*
     private fun logLogin(){
-        apiClient.getApiService(this)
-                .login(LoginRequest(email = "moises@moises.com", password = "admin"))
+        apiClient.getApiService(this).login(LoginRequest(email = "moises@moises.com", password = "admin"))
                 .enqueue(object : Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         //Error Login In
@@ -62,10 +57,12 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
 
                             ).show()
+                            println("SESSION MANAGER ON lOGIN ACTIVITY $sessionManager")
+                            println(response)
                             txt_info.setText(response.toString())
                         }
                     }
 
                 })
-        }
+        }*/
 }

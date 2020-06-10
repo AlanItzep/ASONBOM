@@ -2,14 +2,13 @@ package com.example.asonbom.data.responses
 
 import com.example.asonbom.data.models.User
 import com.google.gson.annotations.SerializedName
-import org.json.JSONObject
 
-data class LoginResponse(
+data class LoginResponseK(
     @SerializedName("status_code")
-    var statusCode:Int,
+    var statusCode: Int,
 
     @SerializedName("auth_token")
-    var authToken:String,
+    var authToken: String,
 
     @SerializedName("user")
     var user: User?

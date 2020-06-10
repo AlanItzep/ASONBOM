@@ -6,26 +6,29 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient {
-    private lateinit var apiService:ApiService
+class ApiClientK {
+    private lateinit var apiService:ApiServiceK
 
-    fun getApiService(context: Context): ApiService{
+    fun getApiService(context: Context): ApiServiceK {
+
         if (!::apiService.isInitialized){
-            val retrofit=Retrofit.Builder()
+            val retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okhttpClient(context))
                 .build()
 
-            apiService=retrofit.create(ApiService::class.java)
+            apiService = retrofit.create(ApiServiceK::class.java)
         }
-        return apiService
-    }
 
+        return apiService
+
+    }
 
     private fun okhttpClient(context: Context): OkHttpClient{
         return OkHttpClient.Builder()
-            .addInterceptor(AuthInterceptor(context))
-            .build()
+                .addInterceptor(AuthInterceptorK(context))
+                .build()
     }
+
 }

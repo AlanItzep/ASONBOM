@@ -5,7 +5,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asonbom.R
-import com.example.asonbom.data.ApiClient
+import com.example.asonbom.data.ApiClientK
 import com.example.asonbom.data.responses.PostsResponse
 import com.example.asonbom.utils.SessionManager
 import retrofit2.Call
@@ -15,14 +15,14 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var apiClient: ApiClient
+    private lateinit var apiClient: ApiClientK
     private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        apiClient = ApiClient()
+        apiClient = ApiClientK()
         sessionManager = SessionManager(this)
 
         val button = findViewById<Button>(R.id.btn_login)
