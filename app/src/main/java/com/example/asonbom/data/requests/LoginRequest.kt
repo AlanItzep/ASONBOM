@@ -8,5 +8,8 @@ data class LoginRequest(
     var email: String,
 
     @SerializedName("password")
-    var password: String
+    var password: String,
+
+    @SerializedName("gettoken")
+    var gettoken: Boolean = true
 )
