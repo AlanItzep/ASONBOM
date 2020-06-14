@@ -7,17 +7,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.asonbom.R;
-import com.example.asonbom.data.ApiService;
 import com.example.asonbom.data.requests.LoginRequest;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class sampleActivity extends AppCompatActivity implements View.OnClickListener, Callback<LoginRequest> {
     private View btn;
@@ -25,7 +19,7 @@ public class sampleActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.personal_information);
 
         btn = findViewById(R.id.btn_login);
         btn.setOnClickListener(this);

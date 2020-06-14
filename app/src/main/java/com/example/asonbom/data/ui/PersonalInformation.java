@@ -3,7 +3,6 @@ package com.example.asonbom.data.ui;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,21 +17,18 @@ import com.example.asonbom.data.models.RowListAdapter;
 import com.example.asonbom.data.responses.InfoStations;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements  Callback<InfoStations> {
+public class PersonalInformation extends AppCompatActivity implements  Callback<InfoStations> {
     Object responseRaw;
     TextView test;
 
@@ -41,9 +37,9 @@ public class LoginActivity extends AppCompatActivity implements  Callback<InfoSt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.personal_information);
 
-        test = findViewById(R.id.txt_info);
+        test = findViewById(R.id.text_name);
 
         Call<InfoStations> call = ApiClient.getApiService().getStations();
         call.enqueue(this);
@@ -123,7 +119,7 @@ public class LoginActivity extends AppCompatActivity implements  Callback<InfoSt
                     rowList.add(exp);
 
 
-                    RowListAdapter adapter = new RowListAdapter(LoginActivity.this, R.layout.row_layout, rowList);
+                    RowListAdapter adapter = new RowListAdapter(PersonalInformation.this, R.layout.row_layout, rowList);
                     mListView.setAdapter(adapter);
                     System.out.println(rowList);
                     /*

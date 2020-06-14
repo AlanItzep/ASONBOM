@@ -18,7 +18,7 @@ public class MultipleitemList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.personal_information);
 
         Log.d(TAG,"onCreate: started.");
         ListView mListView = (ListView) findViewById(R.id.person_list);
