@@ -4,6 +4,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class PersonInfo {
 
+    public PersonInfo(String sub, String email, String nombre, String last_name, String telefono, String rango, String rol, String estacion, String iat, String exp) {
+        this.sub = sub;
+        this.email = email;
+        this.nombre = nombre;
+        this.last_name = last_name;
+        this.telefono = telefono;
+        this.rango = rango;
+        this.rol = rol;
+        this.estacion = estacion;
+        this.iat = iat;
+        this.exp = exp;
+    }
+
+
     //"sub","email","nombre","last_name","telefono","rango","rol","estacion","iat","exp"
     @SerializedName("sub")
     private String sub ;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +13,8 @@ import com.example.asonbom.R;
 import com.example.asonbom.data.ApiClient;
 import com.example.asonbom.data.AuthInterceptor;
 import com.example.asonbom.data.models.LoginData;
+import com.example.asonbom.data.models.RowInfo;
+import com.example.asonbom.data.models.RowListAdapter;
 import com.example.asonbom.data.responses.InfoStations;
 import com.google.gson.Gson;
 
@@ -24,8 +25,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,8 +77,9 @@ public class LoginActivity extends AppCompatActivity implements  Callback<InfoSt
                 json = g.toJson(responseRaw);
 
                 try {
+
+                    ListView mListView = findViewById(R.id.person_list);
                     ArrayList<String> subList = new ArrayList<>();
-                    HashMap<String,String> sub = new HashMap<>();
 
                     JSONObject jObj = new JSONObject(json);//.replaceAll("$=",":"));
                     subList.add(jObj.getString("sub"));
@@ -90,24 +92,47 @@ public class LoginActivity extends AppCompatActivity implements  Callback<InfoSt
                     subList.add(jObj.getString("estacion"));
                     subList.add(jObj.getString("iat"));
                     subList.add(jObj.getString("exp"));
-                    //subList.add(sub);
-                    System.out.println("ESTO ES SUB "+sub);
-                    System.out.println("ESTO ES SUBLIST "+subList);
-                    for( int i = 0; i < subList.size() ;i++){
-                        //ListAdapter adapter = new SimpleAdapter(LoginActivity.this, subList, R.layout.row_layout, new String[]{String.valueOf(list.get(i))}, new  int[]{ R.id.text_info});
-                        //lv.setAdapter(adapter);
 
-                        List<String> list2= Arrays.asList("sub","email","nombre","apellido","telefono","rango","rol","estacion","iat","exp");
-                        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.row_layout, R.id.text_name, list);
-                        //lv.setAdapter(adapter);
-                        System.out.println(i+" "+list2.get(i)+" "+subList.get(i));
-                    }
+
+                    System.out.println("ESTO ES SUBLIST "+subList);
+                    List<String> objNames = Arrays.asList("sub","email","nombre","apellido","telefono","rango","rol","estacion","iat","exp");
+                    List<String> objTitles =  Arrays.asList( "Sub estación","Email","Nombre","Apellido","Teléfono","Rango","Rol","Estación","iat","exp");
+
+                    RowInfo sub = new RowInfo(objTitles.get(0), subList.get(0));
+                    RowInfo email = new RowInfo(objTitles.get(1), subList.get(1));
+                    RowInfo nombre = new RowInfo(objTitles.get(2), subList.get(2));
+                    RowInfo apellido = new RowInfo(objTitles.get(3), subList.get(3));
+                    RowInfo telefono = new RowInfo(objTitles.get(4), subList.get(4));
+                    RowInfo rango = new RowInfo(objTitles.get(5), subList.get(5));
+                    RowInfo rol = new RowInfo(objTitles.get(6), subList.get(6));
+                    RowInfo estacion = new RowInfo(objTitles.get(7), subList.get(7));
+                    RowInfo iat = new RowInfo(objTitles.get(8), subList.get(8));
+                    RowInfo exp = new RowInfo(objTitles.get(9), subList.get(9));
+
+                    ArrayList<RowInfo> rowList = new ArrayList<>();
+
+                    rowList.add(sub);
+                    rowList.add(email);
+                    rowList.add(nombre);
+                    rowList.add(apellido);
+                    rowList.add(telefono);
+                    rowList.add(rango);
+                    rowList.add(rol);
+                    rowList.add(estacion);
+                    rowList.add(iat);
+                    rowList.add(exp);
+
+
+                    RowListAdapter adapter = new RowListAdapter(LoginActivity.this, R.layout.row_layout, rowList);
+                    mListView.setAdapter(adapter);
+                    System.out.println(rowList);
+                    /*
                     ListView lv = findViewById(R.id.person_list);
                     ArrayAdapter<String> adapters= new ArrayAdapter<>(LoginActivity.this, R.layout.row_layout, R.id.text_name, list);
                     final ArrayAdapter adapter = new ArrayAdapter<>(LoginActivity.this, R.layout.row_layout, R.id.text_info, subList);
                     lv.setAdapter(adapters);
                     lv.setAdapter(adapter);
-
+                    */
                 } catch (JSONException ex) {
                     ex.printStackTrace();
 
