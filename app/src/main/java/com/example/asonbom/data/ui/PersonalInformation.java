@@ -15,6 +15,7 @@ import com.example.asonbom.data.models.LoginData;
 import com.example.asonbom.data.models.RowInfo;
 import com.example.asonbom.data.models.RowListAdapter;
 import com.example.asonbom.data.responses.InfoStations;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -33,13 +34,42 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
     TextView test;
 
     String json;
-    @SuppressLint("WrongViewCast")
+
+    BottomNavigationView bottomNavigation;
+    @SuppressLint({"WrongViewCast", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.personal_information);
 
         test = findViewById(R.id.text_name);
+
+
+
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        /*
+        bottomNavigationView.set(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull  MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.menu:
+                        Toast.makeText(PersonalInformation.this,"HOME",Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.comanda:
+                        Toast.makeText(PersonalInformation.this,"Comanda",Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.cuenta:
+                        Toast.makeText(PersonalInformation.this,"Cuenta",Toast.LENGTH_LONG).show();
+                        ;
+                        break;
+                    case R.id.ubicacion:
+                        Toast.makeText(PersonalInformation.this,"Ubicacion",Toast.LENGTH_LONG).show();
+                        break;
+                }
+                return true;
+            }
+        });*/
 
         Call<InfoStations> call = ApiClient.getApiService().getStations();
         call.enqueue(this);
@@ -50,17 +80,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
 
         System.out.println(datos2);
 
-
-
-        List<String> list= Arrays.asList("sub","email","nombre","apellido","telefono","rango","rol","estacion","iat","exp");
-
-        List<String> list2= Arrays.asList("sub","email","nombre","apellido","telefono","rango","rol","estacion","iat","exp");
-
-        //list.get(i), String.valueOf(subList.get(0))
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.row_layout, R.id.text_name, list);
-        //lv.setAdapter(adapter);
-
-
         Call<InfoStations.LoginResponse> calllogin= ApiClient.getApiService().getToken(datos2);
         calllogin.enqueue(new Callback<InfoStations.LoginResponse>() {
             @Override
@@ -68,10 +87,8 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
                 InfoStations.LoginResponse result1 = response.body();
                 responseRaw = result1.getUser();
                 System.out.println(responseRaw);
-                String responseRawU = "{user=["+ responseRaw+"]}";
                 Gson g = new Gson();
                 json = g.toJson(responseRaw);
-
                 try {
 
                     ListView mListView = findViewById(R.id.person_list);
@@ -122,13 +139,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
                     RowListAdapter adapter = new RowListAdapter(PersonalInformation.this, R.layout.row_layout, rowList);
                     mListView.setAdapter(adapter);
                     System.out.println(rowList);
-                    /*
-                    ListView lv = findViewById(R.id.person_list);
-                    ArrayAdapter<String> adapters= new ArrayAdapter<>(LoginActivity.this, R.layout.row_layout, R.id.text_name, list);
-                    final ArrayAdapter adapter = new ArrayAdapter<>(LoginActivity.this, R.layout.row_layout, R.id.text_info, subList);
-                    lv.setAdapter(adapters);
-                    lv.setAdapter(adapter);
-                    */
                 } catch (JSONException ex) {
                     ex.printStackTrace();
 
@@ -143,18 +153,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
             }
         });
 
-
-        //test.setText(json);
-        //"sub","email","nombre","last_name","telefono","rango","rol","estacion","iat","exp"
-
-
-/*
-
-        ListAdapter adapter = new SimpleAdapter(LoginActivity.this, responseRaw, R.layout.row_layout, new String[]{"id","no_estacion","direccion","nombre","telefono","long","lat"},
-                                                        new int[]{R.id.txt_id,R.id.txt_no_estacion,R.id.txt_direccion,R.id.txt_nombre,R.id.txt_telefono,R.id.txt_long,R.id.lat});
-        sc.setAd
-        System.out.println(responseRaw
-                */
     }
 
     @Override
@@ -162,10 +160,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
         if (response.isSuccessful()){
             InfoStations infoStations = response.body();
         }
-    }
-
-    public static class ViewHolder{
-        public TextView textView;
     }
 
     @Override

@@ -59,6 +59,9 @@ dependencies {
     //
     implementation "com.squareup.retrofit2:converter-scalars:2.3.0"
 
+    //Bottom toolbar
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
 }

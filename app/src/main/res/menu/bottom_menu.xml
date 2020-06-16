@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Yo" />
+    <item
+        android:id="@+id/navigation_notification"
+        android:title="Notificaciones" />
+    <item
+        android:id="@+id/navigation_emergency"
+        android:title="Emergencia" />
+
+    <item
+        android:id="@+id/navigation_historial"
+        android:title="Historial" />
+
+    <item
+        android:id="@+id/navigation_help"
+        android:title="Ayuda" />
+</menu>
