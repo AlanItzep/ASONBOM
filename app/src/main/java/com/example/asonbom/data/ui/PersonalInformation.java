@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ import com.example.asonbom.data.models.RowInfo;
 import com.example.asonbom.data.models.RowListAdapter;
 import com.example.asonbom.data.responses.InfoStations;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -35,7 +37,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
 
     String json;
 
-    BottomNavigationView bottomNavigation;
     @SuppressLint({"WrongViewCast", "ResourceType"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +45,6 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
 
         test = findViewById(R.id.text_name);
 
-
-
-        bottomNavigation = findViewById(R.id.bottom_navigation);
         /*
         bottomNavigationView.set(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

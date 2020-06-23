@@ -22,7 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.asonbom.R;
 import com.example.asonbom.data.ui.PersonalInformation;
-
+import com.example.asonbom.data.ui.data.ActivityHome;
 
 public class Login  extends AppCompatActivity {
     private LoginViewModel loginViewModel;
@@ -115,7 +115,7 @@ public class Login  extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(), PersonalInformation.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
                 startActivity(intent);
             }
         });
