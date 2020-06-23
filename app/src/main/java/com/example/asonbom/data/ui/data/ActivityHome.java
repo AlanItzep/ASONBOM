@@ -1,10 +1,12 @@
 package com.example.asonbom.data.ui.data;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
 import com.example.asonbom.R;
+import com.example.asonbom.data.ui.register.Register;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -33,6 +35,9 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                //****
+                Intent intent = new Intent(getApplicationContext(), Register.class);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
