@@ -13,6 +13,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="header_register">Ingreso Datos: </string>
+    <string name="direction">Dirección</string>
+    <string name="reference">Referencia</string>
+    <string name="community">Comunidad</string>
+    <string name="additional">Información Adicional</string>
+    <string name="upload_images">Subir imágenes</string>
 
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -34,5 +40,8 @@
     <string name="title_activity_register">register</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
+
+    <string name="title_grid">Escoge una categoria</string>
 
 </resources>
