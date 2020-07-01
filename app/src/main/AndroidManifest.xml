@@ -17,16 +17,20 @@
         android:usesCleartextTraffic="true">
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBVaS-tKhboYJgdwDRJkfoZXcWLD-bJKZc" />
-        <activity android:name=".data.ui.register.Register"></activity>
         <activity
-            android:name=".data.ui.register.register"
+            android:name=".data.ui.ButtonsAdapter"
+            android:theme="@style/personalTheme.NoActionBar" />
+        <activity
+            android:name=".data.ui.register.Register"
             android:label="@string/title_activity_register"
             android:theme="@style/personalTheme.NoActionBar" />
         <activity
             android:name=".data.ui.data.ActivityHome"
             android:label=""
             android:theme="@style/personalTheme.NoActionBar" />
-        <activity android:name=".data.ui.ui.login.Login">
+        <activity
+            android:name=".data.ui.ui.login.Login"
+            android:theme="@style/personalTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

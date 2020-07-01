@@ -17,19 +17,19 @@ public class ButtonsAdapter extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.grid_buttons);
 
-        buttonsGrid = (GridLayout) findViewById(R.id.grid_view);
+        buttonsGrid = findViewById(R.id.grid_view);
 
         //Set Event
         setSingleEvent(buttonsGrid);
     }
 
-    private void setSingleEvent(GridLayout mainGrid) {
+    private void setSingleEvent(GridLayout buttonsGrid) {
         //Loop all child item of Main Grid
-        for (int i = 0; i < mainGrid.getChildCount(); i++) {
+        for (int i = 0; i < buttonsGrid.getChildCount(); i++) {
             //You can see , all child item is CardView , so we just cast object to CardView
-            CardView cardView = (CardView) mainGrid.getChildAt(i);
+            CardView cardView = (CardView) buttonsGrid.getChildAt(i);
             final int finalI = i;
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
