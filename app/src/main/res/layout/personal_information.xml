@@ -14,6 +14,7 @@
         android:id="@+id/person_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="4dp"
+        android:layout_margin="8dp"
+        android:dividerHeight="8dp"
         tools:ignore="MissingConstraints" />
    </androidx.constraintlayout.widget.ConstraintLayout>

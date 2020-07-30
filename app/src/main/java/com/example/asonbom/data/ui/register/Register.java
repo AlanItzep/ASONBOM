@@ -12,26 +12,40 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TimePicker;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.asonbom.R;
+import com.example.asonbom.data.ApiClient;
+import com.example.asonbom.data.AuthInterceptor;
+import com.example.asonbom.data.models.LoginData;
+import com.example.asonbom.data.responses.CreateEmResponse;
+import com.example.asonbom.data.responses.InfoStations;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Register extends AppCompatActivity implements OnMapReadyCallback {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class Register extends AppCompatActivity implements OnMapReadyCallback, Callback<CreateEmResponse> {
+
+    String json;
+    Object responseRaw;
     private MapView mMapView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +54,10 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
         mMapView = findViewById(R.id.map_view_indicator);
         mMapView.onCreate(savedInstanceState);
         mMapView.getMapAsync(this);
+
+
+        TimePicker picker = findViewById(R.id.timePicker1);
+        picker.setIs24HourView(true);
 
         Button pickImage = findViewById(R.id.button_images);
         pickImage.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +76,38 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
                 intent.setType("image/*");
                 startActivityForResult(intent, 1);
 
+            }
+        });
+
+        Button createEmer = findViewById(R.id.button_send);
+        createEmer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        CreateEmResponse datos = new CreateEmResponse();
+        System.out.println("Esto es datos: " + datos + " ***************************************");
+
+        AuthInterceptor datos2 = new AuthInterceptor();
+        datos2.params(datos);
+
+        System.out.println("Esto es datos2: " + datos2 + " ***************************************");
+
+        Call<CreateEmResponse> calllogin = ApiClient.getApiService().setEme(datos2);
+        calllogin.enqueue(new Callback<CreateEmResponse>() {
+            @Override
+            public void onResponse(Call<CreateEmResponse> call, Response<CreateEmResponse> response) {
+                CreateEmResponse result1 = response.body();
+                responseRaw = result1.toString();
+                System.out.println(responseRaw);
+            }
+
+            @Override
+            public void onFailure(Call<CreateEmResponse> call, Throwable t) {
+                //for getting error in network put here Toast, so get the error on network
+                //test.setText(t.toString());
+                System.out.println(t);
             }
         });
     }
@@ -113,6 +163,17 @@ public class Register extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap map) {
-        map.addMarker(new MarkerOptions().position(new LatLng(41.38879,2.15899)).title("Marker"));
+        map.addMarker(new MarkerOptions().position(new LatLng(41.38879, 2.15899)).title("Marker"));
+    }
+
+    @Override
+    public void onResponse
+            (Call<CreateEmResponse> call, Response<CreateEmResponse> response) {
+
+    }
+
+    @Override
+    public void onFailure(Call<CreateEmResponse> call, Throwable t) {
+
     }
 }

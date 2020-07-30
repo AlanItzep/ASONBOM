@@ -38,7 +38,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".data.ui.sampleActivity" />
-        <activity android:name=".data.ui.PersonalInformation" />
+        <activity
+            android:name=".data.ui.PersonalInformation"
+            android:theme="@style/personalTheme.NoActionBar"/>
         <activity android:name=".data.MultipleitemList" />
     </application>
 

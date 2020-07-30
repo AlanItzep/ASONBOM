@@ -16,7 +16,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.asonbom.R;
+import com.example.asonbom.data.ApiClient;
+import com.example.asonbom.data.responses.InfoStations;
 import com.example.asonbom.data.ui.PersonalInformation;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
@@ -47,6 +53,8 @@ public class HomeFragment extends Fragment {
         });
         return root;
     }
+
+
 
 
 }

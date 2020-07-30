@@ -7,4 +7,5 @@ object Constants {
     const val LOGIN_URL = "user/login"
     const val POSTS_URL = "posts"
     const val LIST_STAT = "estacion/list"
+    const val CRT_EMERG = "emergencia/create"
 }

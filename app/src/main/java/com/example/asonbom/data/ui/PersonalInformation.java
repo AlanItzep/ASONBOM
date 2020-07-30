@@ -69,16 +69,17 @@ public class PersonalInformation extends AppCompatActivity implements  Callback<
             }
         });*/
 
-        Call<InfoStations> call = ApiClient.getApiService().getStations();
-        call.enqueue(this);
+        //Call<InfoStations> call = ApiClient.getApiService().getStations();
+        //call.enqueue(this);
         LoginData datos = new LoginData();
+        System.out.println(datos);
 
         AuthInterceptor datos2 = new AuthInterceptor();
         datos2.params(datos);
 
         System.out.println(datos2);
 
-        Call<InfoStations.LoginResponse> calllogin= ApiClient.getApiService().getToken(datos2);
+        Call<InfoStations.LoginResponse> calllogin = ApiClient.getApiService().getToken(datos2);
         calllogin.enqueue(new Callback<InfoStations.LoginResponse>() {
             @Override
             public void onResponse(Call<InfoStations.LoginResponse> call, Response<InfoStations.LoginResponse> response) {

@@ -1,5 +1,6 @@
 package com.example.asonbom.data;
 
+import com.example.asonbom.data.responses.CreateEmResponse;
 import com.example.asonbom.data.responses.InfoStations;
 import com.example.asonbom.utils.Constants;
 
@@ -11,7 +12,9 @@ import retrofit2.http.POST;
 public interface ApiService {
     @POST(Constants.LOGIN_URL)
     Call<InfoStations.LoginResponse> getToken(@Body AuthInterceptor body);
+    @POST(Constants.CRT_EMERG)
+    Call<CreateEmResponse> setEme(@Body AuthInterceptor body);
     @GET(Constants.LIST_STAT)
-    Call<InfoStations> getStations();
+    Call<InfoStations.LoginResponse> getStations();
 
 }

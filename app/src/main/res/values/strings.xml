@@ -13,12 +13,18 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="header_register">Ingreso Datos: </string>
+    <string name="header_title_activity">Ingreso de datos</string>
+    <string name="header_2_location">Escoge tu ubicación en el mapa: </string>
+    <string name="header_2_date">Escoger la fecha: </string>
+    <string name="header_2_time">Escoger la hora: </string>
+    <string name="title_emergency">Título</string>
+    <string name="details_emergency">Detalles</string>
     <string name="direction">Dirección</string>
     <string name="reference">Referencia</string>
     <string name="community">Comunidad</string>
     <string name="additional">Información Adicional</string>
     <string name="upload_images">Subir imágenes</string>
+    <string name="create_emergency">Crear emergencia</string>
 
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -28,8 +34,9 @@
 
     <string name="search_title">Di algo… </string>
 
+    <string name="title_nav_section">Ajustes</string>
+
     <string name="menu_home">Principal</string>
-    <string name="menu_personal">Personal</string>
     <string name="menu_notifications">Notificaciones</string>
     <string name="menu_record">Historial</string>
     <string name="menu_settings">Configuración</string>

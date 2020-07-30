@@ -35,6 +35,8 @@ public class InfoStations {
         private String token;
         @SerializedName("user")
         private Object user;
+        @SerializedName("estaciones")
+        private Object estaciones;
 
         public String getToken(){
            return token;
@@ -47,6 +49,12 @@ public class InfoStations {
         }
         public void setUser(Object user){
             this.user = user;
+        }
+        public  Object getEstaciones(){
+            return estaciones;
+        }
+        public void setEstaciones(Object estaciones){
+            this.estaciones = estaciones;
         }
     }
 }
