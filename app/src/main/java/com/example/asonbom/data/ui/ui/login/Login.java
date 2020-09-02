@@ -63,7 +63,6 @@ public class Login  extends AppCompatActivity {
                 if (loginResult == null) {
                     return;
                 }
-                loadingProgressBar.setVisibility(View.GONE);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
                 }
@@ -115,8 +114,7 @@ public class Login  extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
 
-                Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
-                startActivity(intent);
+
             }
         });
     }
@@ -125,6 +123,8 @@ public class Login  extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
+        startActivity(intent);
 
     }
 

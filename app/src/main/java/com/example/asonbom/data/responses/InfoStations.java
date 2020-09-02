@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class InfoStations {
 
-    @SerializedName("Code")
+    @SerializedName("code")
     public int code;
 
     @SerializedName("status")
@@ -12,6 +12,9 @@ public class InfoStations {
 
     @SerializedName("estaciones")
     public Object response = null;
+
+    @SerializedName("user")
+    public Object user = null;
 
 
     public int getCode(){
